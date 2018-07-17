@@ -1,3 +1,3 @@
 # cloudless-init
 
-A plugin for [cloudless-init](https://github.com/yonkornilov/snowcapper)
+A plugin for [snowcapper](https://github.com/yonkornilov/snowcapper)

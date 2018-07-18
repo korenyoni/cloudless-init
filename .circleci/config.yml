@@ -3,7 +3,7 @@ jobs:
   test-golang:
     docker:
       - image: circleci/golang:1.9
-    working_directory: /go/src/github.com/yonkornilov/snowcapper
+    working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
       - checkout
       - run: make get

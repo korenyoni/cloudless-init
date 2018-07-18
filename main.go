@@ -28,6 +28,6 @@ func main() {
 		}
 		fmt.Println(hostname)
 	} else {
-		fmt.Println("This cli interface is dedicated being executed by unit tests")
+		fmt.Println("This cli interface is dedicated to being executed by unit tests")
 	}
 }

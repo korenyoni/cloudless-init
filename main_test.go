@@ -14,7 +14,7 @@ func TestHost(t *testing.T) {
 		t.Fatal(err)
 	}
 	var hostname string = "test"
-	cmd := exec.Command("go", "run", "main.go", "host", hostname)
+	cmd := exec.Command("go", "run", "main.go", "test-Host(hostname)", hostname)
 
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Cloneflags: syscall.CLONE_NEWUSER |

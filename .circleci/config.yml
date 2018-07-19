@@ -6,6 +6,8 @@ jobs:
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
       - checkout
+      - run: apk update 
+      - run: apk add make
       - run: make get 
       - run: make test 
   

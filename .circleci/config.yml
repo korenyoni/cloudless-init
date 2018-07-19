@@ -10,6 +10,7 @@ jobs:
       - run: apk add make gcc g++
       - run: make get 
       - run: make test 
+      - run: make plugin 
       - store_artifacts:
           path: cloudless-init.so
   

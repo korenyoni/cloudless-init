@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: apk update 
-      - run: apk add make gcc
+      - run: apk add make gcc g++
       - run: make get 
       - run: make test 
   

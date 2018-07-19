@@ -13,6 +13,7 @@ jobs:
       - run: make plugin 
       - store_artifacts:
           path: cloudless-init.so
+          destination: cloudless-init.so
   
 workflows:
   version: 2

@@ -6,8 +6,8 @@ jobs:
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
       - checkout
-      - run: make get
-      - run: make test
+      - run: go get -pkgdir _/tmp -buildmode=plugin ./...
+      - run: go test -pkgdir _/tmp -buildmode=plugin ./...
   
 workflows:
   version: 2

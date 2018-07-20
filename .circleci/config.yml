@@ -31,7 +31,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /cloudless-init
-      - checkout
+      - checkout:
           path: /cloudless-init
       - run: ghr $(git describe --abbrev=0 --tags) cloudless-init.so
 workflows:

@@ -29,5 +29,5 @@ workflows:
     jobs:
       - test-golang
       - build:
-        - requires:
-          test-golang
+          requires:
+            - test-golang

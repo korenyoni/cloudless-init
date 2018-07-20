@@ -20,9 +20,18 @@ jobs:
       - run: apk add make gcc g++
       - run: make get 
       - run: make plugin 
-      - store_artifacts:
-          path: cloudless-init.so
-          destination: cloudless-init.so
+      - persist_to_workspace:
+          root: /go/src/github.com/yonkornilov/cloudless-init
+          paths:
+            - cloudless-init.so 
+  deploy:
+    docker:
+      - image: tsub/ghr 
+    working_directory: /
+    steps:
+      - attach_workspace:
+          at: /
+      - run: ghr $CIRCLE_TAG cloudless-init.so
 workflows:
   version: 2
   btd:
@@ -31,3 +40,11 @@ workflows:
       - build:
           requires:
             - test-golang
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/
+	    tags:
+	      only: /^v.*/
+          requires:
+            - build 

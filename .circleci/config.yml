@@ -31,7 +31,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /
-      - run: ghr $CIRCLE_TAG cloudless-init.so
+      - checkout
+      - run: ghr $(git describe --abbrev=0 --tags) cloudless-init.so
 workflows:
   version: 2
   btd:

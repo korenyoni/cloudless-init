@@ -39,9 +39,15 @@ workflows:
   btd:
     jobs:
       - test-golang
+          filters:
+            tags:
+              only: /^v.*/
       - build:
           requires:
             - test-golang
+          filters:
+            tags:
+              only: /^v.*/
       - deploy:
           requires:
             - build 

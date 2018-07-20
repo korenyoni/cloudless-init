@@ -32,8 +32,8 @@ jobs:
       - attach_workspace:
           at: /cloudless-init
       - checkout:
-          path: /cloudless-init
-      - run: cd /cloudless-init && ghr $(git describe --abbrev=0 --tags) cloudless-init.so
+          path: /repo
+      - run: cd /repo && ghr $(git describe --abbrev=0 --tags) /cloudless-init/cloudless-init.so
 workflows:
   version: 2
   btd:

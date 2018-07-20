@@ -38,7 +38,7 @@ workflows:
   version: 2
   btd:
     jobs:
-      - test-golang
+      - test-golang:
           filters:
             tags:
               only: /^v.*/

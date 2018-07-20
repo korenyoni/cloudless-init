@@ -27,13 +27,13 @@ jobs:
   deploy:
     docker:
       - image: tsub/ghr 
-    working_directory: /cloudless-init
+    working_directory: /
     steps:
       - attach_workspace:
           at: /cloudless-init
       - checkout:
           path: /cloudless-init
-      - run: ghr $(git describe --abbrev=0 --tags) cloudless-init.so
+      - run: cd /cloudless-init && ghr $(git describe --abbrev=0 --tags) cloudless-init.so
 workflows:
   version: 2
   btd:

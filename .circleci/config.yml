@@ -33,7 +33,7 @@ jobs:
           at: /cloudless-init
       - checkout:
           path: /repo
-      - run: cd /repo && ghr $(git describe --abbrev=0 --tags) /cloudless-init/cloudless-init.so
+      - run: cd /repo && ghr -u $CIRCLE_USERNAME $(git describe --abbrev=0 --tags) /cloudless-init/cloudless-init.so
 workflows:
   version: 2
   btd:

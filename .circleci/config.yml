@@ -42,10 +42,10 @@ workflows:
           requires:
             - test-golang
       - deploy:
+          requires:
+            - build 
           filters:
             tags:
               only: /^v.*/
             branches:
               ignore: /.*/
-          requires:
-            - build 

@@ -10,13 +10,24 @@ jobs:
       - run: apk add make gcc g++
       - run: make get 
       - run: make test 
+  build:
+    docker:
+      - image: golang:1.9-alpine3.8
+    working_directory: /go/src/github.com/yonkornilov/cloudless-init
+    steps:
+      - checkout
+      - run: apk update 
+      - run: apk add make gcc g++
+      - run: make get 
       - run: make plugin 
       - store_artifacts:
           path: cloudless-init.so
           destination: cloudless-init.so
-  
 workflows:
   version: 2
   btd:
     jobs:
       - test-golang
+      - build:
+        - requires:
+          test-golang

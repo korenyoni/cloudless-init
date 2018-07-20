@@ -42,8 +42,6 @@ workflows:
             - test-golang
       - deploy:
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^v.*/
           requires:

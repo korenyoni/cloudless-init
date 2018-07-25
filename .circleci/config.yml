@@ -30,9 +30,8 @@ jobs:
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
       - run: apk update 
-      - run: apk add make gcc g++ git openssh-client
-      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run: git clone $CIRCLE_REPOSITORY_URL
+      - run: apk add make gcc g++ git
+      - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 
       - run: make test 
@@ -42,9 +41,8 @@ jobs:
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
       - run: apk update 
-      - run: apk add make gcc g++ git openssh-client
-      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run: git clone $CIRCLE_REPOSITORY_URL
+      - run: apk add make gcc g++ git
+      - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 
       - run: make plugin 

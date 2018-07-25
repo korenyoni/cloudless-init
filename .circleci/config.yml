@@ -44,7 +44,7 @@ workflows:
             - test-golang
   tagged:
     jobs:
-      - test-golang
+      - test-golang:
           filters:
             branches:
               ignore: /.*/

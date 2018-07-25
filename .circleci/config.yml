@@ -29,7 +29,7 @@ jobs:
       - image: golang:1.9-alpine3.8
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
-      - run: git checkout tags/$(CIRCLE_TAG)
+      - run: git checkout tags/$CIRCLE_TAG
       - run: apk update 
       - run: apk add make gcc g++
       - run: make get 
@@ -39,7 +39,7 @@ jobs:
       - image: golang:1.9-alpine3.8
     working_directory: /go/src/github.com/yonkornilov/cloudless-init
     steps:
-      - run: git checkout tags/$(CIRCLE_TAG)
+      - run: git checkout tags/$CIRCLE_TAG
       - run: apk update 
       - run: apk add make gcc g++
       - run: make get 

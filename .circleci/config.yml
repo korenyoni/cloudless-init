@@ -24,6 +24,30 @@ jobs:
           root: /go/src/github.com/yonkornilov/cloudless-init
           paths:
             - cloudless-init.so 
+  test-golang-tagged:
+    docker:
+      - image: golang:1.9-alpine3.8
+    working_directory: /go/src/github.com/yonkornilov/cloudless-init
+    steps:
+      - run: git checkout tags/$(CIRCLE_TAG)
+      - run: apk update 
+      - run: apk add make gcc g++
+      - run: make get 
+      - run: make test 
+  build-tagged:
+    docker:
+      - image: golang:1.9-alpine3.8
+    working_directory: /go/src/github.com/yonkornilov/cloudless-init
+    steps:
+      - run: git checkout tags/$(CIRCLE_TAG)
+      - run: apk update 
+      - run: apk add make gcc g++
+      - run: make get 
+      - run: make plugin 
+      - persist_to_workspace:
+          root: /go/src/github.com/yonkornilov/cloudless-init
+          paths:
+            - cloudless-init.so 
   deploy:
     docker:
       - image: tsub/ghr 
@@ -44,13 +68,13 @@ workflows:
             - test-golang
   tagged:
     jobs:
-      - test-golang:
+      - test-golang-tagged:
           filters:
             branches:
               ignore: /.*/
             tags:
               only: /^v.*/
-      - build:
+      - build-tagged:
           requires:
             - test-golang
           filters:

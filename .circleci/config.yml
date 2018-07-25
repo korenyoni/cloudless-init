@@ -60,7 +60,6 @@ jobs:
           at: /cloudless-init
       - run: apk update 
       - run: apk add git
-      - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
       - run: cd /cloudless-init && ghr -u $CIRCLE_USERNAME $(git describe --abbrev=0 --tags) /cloudless-init/cloudless-init.so
 workflows:
   version: 2

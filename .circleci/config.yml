@@ -31,6 +31,7 @@ jobs:
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git openssh-client
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: git clone $CIRCLE_REPOSITORY_URL
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 
@@ -42,6 +43,7 @@ jobs:
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git openssh-client
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: git clone $CIRCLE_REPOSITORY_URL
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 

@@ -31,6 +31,7 @@ jobs:
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git
+      - run: git clone $CIRCLE_REPOSITORY_URL
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 
       - run: make test 
@@ -41,6 +42,7 @@ jobs:
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git
+      - run: git clone $CIRCLE_REPOSITORY_URL
       - run: git checkout tags/$CIRCLE_TAG
       - run: make get 
       - run: make plugin 

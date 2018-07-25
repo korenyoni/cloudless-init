@@ -27,25 +27,25 @@ jobs:
   test-golang-tagged:
     docker:
       - image: golang:1.9-alpine3.8
-    working_directory: /go/src/github.com/yonkornilov/cloudless-init
+    working_directory: /go/src/github.com/yonkornilov/
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git
       - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-      - run: git checkout tags/$CIRCLE_TAG
-      - run: make get 
-      - run: make test 
+      - run: git checkout tags/$CIRCLE_TAG -C $CIRCLE_PROJECT_REPONAME
+      - run: cd $CIRCLE_PROJECT_REPONAME && make get 
+      - run: cd $CIRCLE_PROJECT_REPONAME && make test
   build-tagged:
     docker:
       - image: golang:1.9-alpine3.8
-    working_directory: /go/src/github.com/yonkornilov/cloudless-init
+    working_directory: /go/src/github.com/yonkornilov/
     steps:
       - run: apk update 
       - run: apk add make gcc g++ git
       - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-      - run: git checkout tags/$CIRCLE_TAG
-      - run: make get 
-      - run: make plugin 
+      - run: git checkout tags/$CIRCLE_TAG -C $CIRCLE_PROJECT_REPONAME
+      - run: cd $CIRCLE_PROJECT_REPONAME && make get 
+      - run: cd $CIRCLE_PROJECT_REPONAME && make plugin
       - persist_to_workspace:
           root: /go/src/github.com/yonkornilov/cloudless-init
           paths:

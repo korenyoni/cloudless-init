@@ -76,7 +76,7 @@ workflows:
               only: /^v.*/
       - build-tagged:
           requires:
-            - test-golang
+            - test-golang-tagged
           filters:
             branches:
               ignore: /.*/

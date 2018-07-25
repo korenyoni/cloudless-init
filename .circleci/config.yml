@@ -32,7 +32,7 @@ jobs:
       - run: apk update 
       - run: apk add make gcc g++ git
       - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-      - run: git checkout tags/$CIRCLE_TAG -C $CIRCLE_PROJECT_REPONAME
+      - run: cd $CIRCLE_PROJECT_REPONAME && git checkout tags/$CIRCLE_TAG
       - run: cd $CIRCLE_PROJECT_REPONAME && make get 
       - run: cd $CIRCLE_PROJECT_REPONAME && make test
   build-tagged:
@@ -43,7 +43,7 @@ jobs:
       - run: apk update 
       - run: apk add make gcc g++ git
       - run: git clone https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-      - run: git checkout tags/$CIRCLE_TAG -C $CIRCLE_PROJECT_REPONAME
+      - run: cd $CIRCLE_PROJECT_REPONAME && git checkout tags/$CIRCLE_TAG
       - run: cd $CIRCLE_PROJECT_REPONAME && make get 
       - run: cd $CIRCLE_PROJECT_REPONAME && make plugin
       - persist_to_workspace:
